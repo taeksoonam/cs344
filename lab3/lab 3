@@ -1,0 +1,67 @@
+3.1
+
+a. 
+
+depth-first search algorithm:
+
+	solved: solved
+	easy: failed
+	harder: failed
+	hardest: failed
+
+AC3 algorithm:
+
+	solved: solved
+	easy: solved
+	harder: failed
+	hardest: failed
+
+backtracking search algorithm:
+
+	solved: solved
+	easy: solved
+	harder: failed
+	hardest: failed
+
+min conflicts algorithm:
+
+	solved: solved
+	easy: failed
+	harder: failed
+	hardest: failed
+
+Overall, the algorithms were not very successful when I ran harder puzzles.
+In terms of depth-first search algorithm, it would not work due to its nature of traversing the whole solution graph, which does not help solving the problem, when it is trying to solve the problem.
+In terms of AC3 algorithm, it only checks constraints that exist between two nodes, and therefore, when it comes to harder problem, there are too many empty spaces that it has to fill. 
+Doing so occurs more problems, when it checks only two constraints, since it will have difficulties tryin to solve other pairs of conflicts after giving solutions to the first few pairs.
+Similar to AC3 problem, backtracking search is not also able to solve the whole problem when there are too many empty spaces exist. One way to solve this issue is using heuristic search.
+In terms of minimum conflicts algorithm, constraints that are assigned for the problem are too extensive, which makes difficult for the algorithm to choose variable that minimizes the possible conflicts.
+
+b. mrv method was not very effective; however, after setting the inference to forward checking the problem worked. The combination showed similar performance after setting the inference to forward checking. 
+
+
+
+3.2
+
+a.
+AC3 fails the problem, due to similar reason, since checking two nodes that do not take in account of other nodes lead to failure of finding solution.
+Backtracking worked up until 25, which, the method of, eliminating conflicting nodes worked well.
+For minimum conflicts, it worked up until around 4000. I believe that is due to its nature of choosing nodes that avoid as many as conflicts it could.
+
+b.
+With forward checking and mrv, the n increased to 99 with hitting around 0.059 seconds. These two settings complement each other to check the forward nodes and choosing minimum remaining variables.
+
+c.
+1) checks the current state, and if the current state is solution, it returns its current state as the solution.
+2) Otherwise, it chooses a variable with minimum conflicts.
+3) Then, switching over to transition state.
+
+3.3
+
+a.
+CSP and traditional problem differences are that, CSP's formuation occur with variables, domains, neighbors, and constraints. On the other hand, traditional problem's formulation occurs with
+initial state, actions, transitional states, goal testings, and cost function. When solving problems, for CSP, after choosing all the formulation (variables, domains, neighbors, and constraints), it checks 
+whether the current states is non-conflicting. Compared to that, traditional problem is more manual, since the programmer chooses actions that influence transitional state. The results and goal tests for both methods are similar, since CSP should have non-conflicting result, and traditional problem should have a complete state.
+
+b.
+For traditional problem, the heuristics let the program discard cost-inefficient results, while for CSP, the heuristiacs diagnose the leaf of the tree's nodes and reassigning heuristiacs for next non-conflicting state.
