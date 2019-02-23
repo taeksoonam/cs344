@@ -1,0 +1,19 @@
+Exercise 4.3
+
+a)
+	i) P(User) = 0.089
+	ii)P(test|user) = (0.99*0.089)/0.089 = 0.99
+	iii)P(-test|user) = 1 - 0.99 = 0.01
+	iv) P(test|-user) = (P(test) * P(-user|test))/P(-user) = (0.99*0.02)/0.911 = 0.02
+	v) P(user|test) = (P(user) * P(test|user))/P(test) = (0.089*0.99)/((0.089*0.99) + (0.911 *0.02)) = 0.83
+
+b)
+
+P(cancer) = 0.01
+P(positive|cancer) = 0.8
+P(positive|-cancer) = 0.096
+
+P(cancer|positive) = (P(cancer) * P(positive|cancer))/(P(cancer) * P(positive|cancer) + P(-cancer) * P(positive|-cancer))
+				   = (0.001 * 0.8)/((0.01 * 0.8) + (0.99 * 0.096)) = 0.078
+
+- Based on the result, the chance that she may have a cancer is 7.8%
