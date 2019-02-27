@@ -1,0 +1,4 @@
+I guess the way to see introspection would be different. Introspection by itself has a subjective connotation, 
+and thus it is prone to bias, which then will not be able to provide concrete data to properly implement human cognitive process.
+However, if we happen to have millions of observations and find patterns among those data, then it seems reasonable to inform AI efforts to 
+clone human cognitive process.
