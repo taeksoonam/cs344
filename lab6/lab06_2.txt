@@ -1,0 +1,19 @@
+
+Gain(A) = Entropy(V) - Remainder(A) 
+
+Entropy(V) = - sum(vi * log2(vi)): wait(6) vs -wait(6)
+           = - (0.5*log2(0.5) + 0.5*log2(0.5))
+           = - (-.5 + -.5)
+           = 1
+
+Remainder(A)  = sum( (pi + ni) / (p + n) * Entropy(pi/(pi + ni), ni/(pi + ni)))
+              = prob(hungry)*Entropy(hungry) + prob(not hungry) * Entropy(not hungry)
+              = 7/12*-1*(5/7*log2(5/7) + 2/7*log2(2/7)) + 5/12*-1*(1/5*log2(1/5) + 4/5*log2(4/5))
+              = 7/12*-1*(-0.347 + -0.516) + 5/12*-1*(-0.464 + -0.258)
+              = 0.503 + 0.301
+              = 0.804
+
+Gain(A) = 1 - 0.804 = 0.196
+
+With 0.196 bits of information, we can get an insight that we should care more about patrons rather than individuals who are hungry. In a nutshell, type question did not really provided any information, but rather through calculation, we gained information
+to ask to patrons.
