@@ -1,0 +1,63 @@
+a)
+	1) First, we have to take into account that the dataset that we have is from 1990. Having said this, the media_house_value  does not seem to realistic, especially the highest price of median_house_value is 500,001. Moreover, having 55.2 rooms per person (max) or 0 per person (min) do not seem realistic as well.
+
+
+	2) With validation and training data points are not equal, the visualization shows such signficant difference.
+
+	3) This is where we want to randomize the data in order to be handled with no order.
+
+	4) Here, I have only included the part where I modified the problem, whic is
+
+	  training_predictions = linear_regressor.predict(input_fn=predict_training_input_fn)
+	  training_predictions = np.array([item['predictions'][0] for item in training_predictions])
+
+	  validation_predictions = linear_regressor.predict(input_fn=predict_validation_input_fn)
+	  validation_predictions = np.array([item['predictions'][0] for item in validation_predictions])
+
+	  Also, I have increased learning rate, number of steps, and batch size for training and model purposes, which was about 162.30
+
+	  linear_regressor = train_model(
+	    learning_rate=0.00003,
+	    steps=500,
+	    batch_size=5,
+	    training_examples=training_examples,
+	    training_targets=training_targets,
+	    validation_examples=validation_examples,
+	    validation_targets=validation_targets)
+
+	5) test_examples = preprocess_features(california_housing_test_data)
+		test_targets = preprocess_targets(california_housing_test_data)
+
+		predict_test_input_fn = lambda: my_input_fn(
+		      test_examples, 
+		      test_targets["median_house_value"], 
+		      num_epochs=1, 
+		      shuffle=False)
+
+		test_predictions = linear_regressor.predict(input_fn=predict_test_input_fn)
+		test_predictions = np.array([item['predictions'][0] for item in test_predictions])
+
+		root_mean_squared_error = math.sqrt(
+		    metrics.mean_squared_error(test_predictions, test_targets))
+
+		print("Final RMSE (on test data): %0.2f" % root_mean_squared_error)
+
+		Test data RMSE: 160
+
+
+b) In this process of training, validation, and testing datasets, we have confirmed the importance of randomization of the data, and by looking at the summary statistics, we realized how to identify wrongful data. It is also critical to remember that in machine learning, it is important to look at the data when the model does not seem to give right output thatn we have estimated, rather than trying to fix the code. After we understood the dataset, we should work towards to find the most effective way to strengthen the parameters through a number of testings. Then, we test the model with the test dataset, if the model runs correctly and gives the output that makes sense in the context that we are trying to understand.
+
+
+
+
+In this section, I first saw that it is critical to randomize the data so there won't be systematic bias in the division. Within that, I saw how it looks in the summary statistics to have the data systematically divided. There were quite a few measures across the measurements that were different. The lat/long was the most obvious one. With that, it was very helpful to draw them out on a graph. I don't really have a sense of what one degree in lat or long looks like, so it was hard to tell whether the differences in the mean were significant. Once I saw the plot that looked like a map though, it was quite obvious.
+
+I also learned how to use the validation and testing datasets. As in the guide, the validation set is used over and over to strengthen the parameters, but the test dataset is only used once to compare. In this case, we found that it was still a good fit for the test data, so our training model was successful.
+
+
+
+The training dataset is the an actual sample of the data that is used to fit a model. This is the data that 
+   the model learns trends from. The validation dataset is harder for me to understand fully, but it is another sample
+   of the data that is used to provide an unbiased evaluation of the model that fits the training dataset, as well as
+   manipulate hyperparameters. The test dataset is used in the very end to justly evaluate  the final fit of the training
+   dataset. The test dataset is only used on a completely trained model by the means of both the training and validation datasets.

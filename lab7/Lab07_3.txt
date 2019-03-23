@@ -1,0 +1,39 @@
+a)
+	1) california_housing_dataframe["rooms_per_person"] = (
+		    california_housing_dataframe["total_rooms"] / california_housing_dataframe["population"])
+
+		calibration_data = train_model(
+		    learning_rate=0.05,
+		    steps=500,
+		    batch_size=5,
+		    input_feature="rooms_per_person")
+
+	2)  plt.figure(figsize=(15, 6))
+		plt.subplot(1, 2, 1)
+		plt.scatter(calibration_data["predictions"], calibration_data["targets"])
+
+	3)
+ 
+
+Since the histogram from the above showed that the values are mostly under 5, I designated rooms_per_person to 5.
+
+california_housing_dataframe["rooms_per_person"] = (
+    california_housing_dataframe["rooms_per_person"]).apply(lambda x: min(x, 5))
+
+_ = california_housing_dataframe["rooms_per_person"].hist()
+
+Then, I have checked whether the outliers are discarded properly and trained the model and printed the output:
+calibration_data = train_model(
+    learning_rate=0.05,
+    steps=500,
+    batch_size=5,
+    input_feature="rooms_per_person")
+
+_ = plt.scatter(calibration_data["predictions"], calibration_data["targets"])
+
+
+b) The purpose of the synthetic feature is to investigate relationship of features that affect the target. Here, we wanted to examine the ratio between rooms and population, which is associated with population density by each room.
+
+
+c) Outliers are usually data points that are outside of the range of the points. We usually discard the outliers, or at least do not really take into account of them, unless there are quite a number of them that affect the desults of the data.
+

@@ -1,0 +1,23 @@
+a)
+	Categorical data is usually considered when the data come in as text-based or groups that cannot be averaged or calculated. Specific examples would be race, sex, or age.
+	On the other hand, numerical data consist of variables that can have mean, sd. Those type of data can be calculated and be treated as numbers.
+
+b) 
+	1) train_model(
+		    learning_rate=0.00002,
+		    steps=800,
+		    batch_size=3
+		)
+
+		RMSE: 178.50
+
+	2) train_model(
+		    learning_rate=0.00002,
+		    steps=800,
+		    batch_size=3
+		    input_feature = "population"
+		)
+
+		RMSE: 189.04
+
+c) The guide informs us that hyper-parameters are: learning rate, steps, and batch size. It also informs us that there is no rules of thumbs or standards that can be applied, since the effects of those hyper-parameters are really dependent on the data. Hence, the user has to be aware of the data and test different methods to find the ideal hyper-parameter rates.
