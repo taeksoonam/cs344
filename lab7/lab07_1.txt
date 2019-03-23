@@ -1,0 +1,9 @@
+a.
+	1) cities ['city is saint and greater than 50 square miles'] = (cities['Area square miles'] > 50) & cities ['City name'].apply(lambda name: name.startswith('Saint'))
+	   cities
+	2) cities.reindex([2,5,1,6])
+
+b. You would want to use Pandas over NumPy due to several features that can clean, manipulate and rearrange data, such as reindexing, adding extra columns. These kinds of features allow users to handle data especially if the dataset is large.
+
+c. It would be efficient to use reorder/shuffle a pandas dataframe when you want to designate specific y values and x values. Sometimes, the data do not get imported as the way user wants to, which needs adjustments in order to find a relatinoship between response and predictor variables. Through reordering, you can design the dataframe for a right purpose of a project.
+
