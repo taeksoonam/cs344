@@ -1,0 +1,25 @@
+a. Compare and contrast Seaborn vs. MatPlotLib.
+
+While MatPlotLibe is more sophisticated in terms of visualization, Seaborn has features that support MatPlotLib do not have.
+
+
+b. How big is this dataset and does it seem of an appropriate size for this problem?
+
+With 397 rows of data, we can estimate, but the larger the dataset, the more things and insights we can discover.
+
+
+c. Explain what the prescribed normalization of the data does.
+
+Neural nets work better when different features have standardized scale, instead of working on different scales in different features.
+
+
+
+d. Is this an example of a linear regression model?
+
+Yes.
+
+
+e. In their conclusion, they claim that smaller datasets “prefer” smaller networks. Do you agree? Explain your answer.
+
+Yes, because smaller dataset works well when memorizing the inputs. Here, instead of dataset that they can give exact prediction, they want to remember the inputs. The big dataset will result in overfitting.
+
