@@ -1,0 +1,62 @@
+Questions:
+
+What does the Pearson correlation coefficient measure? Identify one example value from the correlation table you compute and explain why it makes sense.
+
+The Pearson’s correlation coefficient measures linear correlation between two variables. Between -1 and 1, -1 indicates negative correlation, while 1 indicates positive correlation. One example is total_rooms and total_bedrooms has a correlation of 0.9. It makes sense, because the fact that there are more rooms has to do with number of bedrooms.
+
+Submit your solutions to tasks 1–2. Include the features you selected for task 1 and the synthetic features you developed for task 2; include the final RMS errors but not the training output. Did you beat the Google-provided baselines?
+
+Task 1
+- 
+#
+# Your code here: add your features of choice as a list of quoted strings.
+#
+minimal_features = [
+    "median_income",
+    "total_rooms"
+]
+
+
+minimal_training_examples = training_examples[minimal_features]
+minimal_validation_examples = validation_examples[minimal_features]
+
+#
+# Don't forget to adjust these parameters.
+#
+train_model(
+    learning_rate=0.001,
+    steps=500,
+    batch_size=5,
+    training_examples=minimal_training_examples,
+    training_targets=training_targets,
+    validation_examples=minimal_validation_examples,
+    validation_targets=validation_targets)
+
+
+My RMSE was 181.11, while Google's RMSE was 165.49
+
+Task 2
+
+training_examples["dist_from_SF"] = abs(training_examples["latitude"] - 38)
+validation_examples["dist_from_SF"] = abs(validation_examples["latitude"] - 38)
+
+minimal_features = [
+    "median_income",
+    "rooms_per_person"
+]
+
+
+
+minimal_training_examples = training_examples[minimal_features]
+minimal_validation_examples = validation_examples[minimal_features]
+
+_ = train_model(
+    learning_rate=0.01,
+    steps=500,
+    batch_size=5,
+    training_examples=selected_training_examples,
+    training_targets=training_targets,
+    validation_examples=selected_validation_examples,
+    validation_targets=validation_targets)
+
+My RMSE was 182.13 while Google's was 182.80

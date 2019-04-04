@@ -1,0 +1,85 @@
+a) They recommend FTRL for L1 optimization, but the code specifies the same rate (learning_rate) for all runs. How is FTRL managing the learning rate?
+
+FTRL manages the learning rate through scaling the rate differently depending on which coefficients it has to handle with, which works well with non-zero numbers.
+
+
+b) What good does the bucketing/binning do?
+
+Bucketing is simplt distributing data into different categories, which is also simply clustering the data depending on the values' identities. This explicitly helps to see the data in categories, which engender better understanding of the data and analysis.
+
+
+c) Submit your solutions to tasks 1–2. Did you find their task 1 bucketing to make sense? Identify one unique feature cross for task 2 and explain how it could be useful.
+
+def construct_feature_columns():
+  """Construct the TensorFlow Feature Columns.
+
+  Returns:
+    A set of feature columns
+  """ 
+  households = tf.feature_column.numeric_column("households")
+  longitude = tf.feature_column.numeric_column("longitude")
+  latitude = tf.feature_column.numeric_column("latitude")
+  housing_median_age = tf.feature_column.numeric_column("housing_median_age")
+  median_income = tf.feature_column.numeric_column("median_income")
+  rooms_per_person = tf.feature_column.numeric_column("rooms_per_person")
+  
+  # Divide households into 7 buckets.
+  bucketized_households = tf.feature_column.bucketized_column(
+    households, boundaries=get_quantile_based_boundaries(
+      training_examples["households"], 7))
+
+  # Divide longitude into 10 buckets.
+  bucketized_longitude = tf.feature_column.bucketized_column(
+    longitude, boundaries=get_quantile_based_boundaries(
+      training_examples["longitude"], 10))
+  
+  # Divide latitude into 10 buckets.
+  bucketized_latitude = tf.feature_column.bucketized_column(
+    latitude, boundaries=get_quantile_based_boundaries(
+      training_examples["latitude"], 10))
+
+  # Divide housing_median_age into 7 buckets.
+  bucketized_housing_median_age = tf.feature_column.bucketized_column(
+    housing_median_age, boundaries=get_quantile_based_boundaries(
+      training_examples["housing_median_age"], 7))
+  
+  # Divide median_income into 7 buckets.
+  bucketized_median_income = tf.feature_column.bucketized_column(
+    median_income, boundaries=get_quantile_based_boundaries(
+      training_examples["median_income"], 7))
+  
+  # Divide rooms_per_person into 7 buckets.
+  bucketized_rooms_per_person = tf.feature_column.bucketized_column(
+    rooms_per_person, boundaries=get_quantile_based_boundaries(
+      training_examples["rooms_per_person"], 7))
+  
+  feature_columns = set([
+    bucketized_longitude,
+    bucketized_latitude,
+    bucketized_housing_median_age,
+    bucketized_households,
+    bucketized_median_income,
+    bucketized_rooms_per_person])
+  
+  return feature_columns
+
+
+_ = train_model(
+    learning_rate=1.0,
+    steps=500,
+    batch_size=100,
+    feature_columns=construct_feature_columns(),
+    training_examples=training_examples,
+    training_targets=training_targets,
+    validation_examples=validation_examples,
+    validation_targets=validation_targets)
+
+
+RMSE was 113.49, so this is a pretty good fit. As the RMSE gets low, it means it fits better.
+
+Task 2:
+
+   housin_median_age_median_income = tf.feature_column.crossed_column(
+   set([bucketized_housing_median_age, bucketized_median_income]), hash_bucket_size=2000)
+
+ This sure makes sense because this combination of mediang_age and median_income provides information of people and housing price in the area, which will benefit people who are trying to relocate to that place.
