@@ -1,0 +1,33 @@
+Exercise 1:
+
+What’s the size of the cats/dogs datasets?
+
+It consists of total 3000 images, 1500 for cats and 1500 for dogs.
+
+
+How does the first convnet compare with the one we did in class.
+      When we did in class the convoluting extracted 32 and 64 while 64 filtered 3X3. Here, 16,32 and 64 filter 3x3. Basically, it is doing more convoluting than the class example, and I assume it's because we have larger dataset to deal with.
+
+Can you see any interesting patterns in the intermediate representations?
+      In the intermediate representation, the cat is being filtered, which I am not sure what could be happening behind. Also, the impage pixels are gradually being converted to abstract and compressed images.
+
+
+Exercise 2:
+
+What is data augmentation?
+
+Data augmentation mainly is when a user manipulates the data in order to avoid repetetitive data by multiplying a number of units to test against.
+
+
+Report your best results and the hyperparameters you used to get them.
+
+loss: 0.4800
+	history = model.fit_generator(
+      train_generator,
+      steps_per_epoch=100,
+      epochs=30,
+      validation_data=validation_generator,
+      validation_steps=50,
+      verbose=2)
+      
+ 0.56 is the best result I got.
