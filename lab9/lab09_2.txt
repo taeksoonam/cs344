@@ -1,0 +1,11 @@
+Why are we regularizing with respect to sparsity?
+
+- Because we want high efficienct while also disregard overfitting. 
+
+How does L1 regularization increase sparsity?
+
+- It increases sparsity through discarding weights that are not inefficient when handling a problem.
+
+Task 1: Here, just report the best log loss value / model size you can get and what gamma value you used to get them.
+
+I used 0.6 and got 0.34 value for LogLoss.

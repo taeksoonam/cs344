@@ -1,0 +1,27 @@
+
+
+How does the linear regression approach to the problem fare?
+
+It incorporates a function called sigmoid, which measures values from 0 to one in order to caluclate the probability.
+
+
+Task 1: Compare and contrast L2 Loss vs LogLoss.
+	LogLoss seems to affect confidence errors more than L2 Loss does. Whilr L2 loss is not able to differentiate between the difference of log loss and square loss.
+	
+Task 2: Explain how the logistic regression fares compared to the linear regression.
+
+Comparing those two was persoanlly hard for me since logistic regression and linear regression deal "loss" in a different way. 
+
+
+Task 3: Here, just report the best values you can achieve for AUC/accuracy and what hyperparameters you used to get them.
+linear_classifier = train_linear_classifier_model(
+    learning_rate=0.0000005,
+    steps=1000,
+    batch_size=3000,
+    training_examples=training_examples,
+    training_targets=training_targets,
+    validation_examples=validation_examples,
+    validation_targets=validation_targets)
+
+   Validation set AUC: 0.69
+   Validation AUC: 0.76
