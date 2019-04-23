@@ -1,0 +1,38 @@
+a) In general, we would use linear model than deep NN model when we find a strong linear correlation between variables. Deep NN model takes much longer time, while linear model takes
+relatively shorter time than deep NN model.
+
+b) For this specific example, deep NN model runs more efficiently than linear model does, which is aboug 85% to 77%.
+
+c) For sentiment analysis, embeddings do make sense, because in problems like measuring the review, it is computationally efficient. 
+All the words are not being used in measuring the review. And using embeddings improved the results as well.
+
+d) "good" and "great" have similar embeddings because they both have positive connotation and tend to be used in argumentative contexts.
+
+e) I have increased the hidden_units to [20,20].
+
+Training set metrics:
+loss 9.959631
+accuracy_baseline 0.5
+global_step 1000
+recall 0.87024
+auc 0.9040701
+prediction/mean 0.536172
+precision 0.7992065
+label/mean 0.5
+average_loss 0.39838523
+auc_precision_recall 0.90071476
+accuracy 0.8258
+---
+Test set metrics:
+loss 10.622393
+accuracy_baseline 0.5
+global_step 1000
+recall 0.85304
+auc 0.8898676
+prediction/mean 0.5353606
+precision 0.7836408
+label/mean 0.5
+average_loss 0.4248957
+auc_precision_recall 0.88386935
+accuracy 0.80876
+---
