@@ -1,0 +1,9 @@
+
+
+a) The confusion matrix for this example shows how a number can be classified differently from original number.
+
+b) In TensorFlow network, the model tends to use more nodes in the hidden layer. I tried changing some parameters to increase the accuracy; however, I could not get higher parameters than 0.95.
+
+c) while running 10 steps do not have any patterns, 1000 steps have more noticeable patterns of steps
+
+
